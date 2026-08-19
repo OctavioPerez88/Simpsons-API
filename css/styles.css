@@ -22,7 +22,7 @@ body {
   display: none;
 }
 
-/* Tipografía Simpson para encabezados y botones */
+
 h1, h2, h3, button, nav ul a {
   font-family: 'Bangers', cursive;
   letter-spacing: 1px;
@@ -33,7 +33,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
-  background-color: #fed439; /* Amarillo Simpson */
+  background-color: #fed439; 
   border-bottom: 4px solid #111;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
@@ -42,7 +42,7 @@ header {
   font-size: 2.2rem;
   color: #fed439;
   -webkit-text-stroke: 1.5px #111;
-  text-shadow: 3px 3px 0px #f162a0; /* Rosa rosquilla */
+  text-shadow: 3px 3px 0px #f162a0;
 }
 
 nav ul {
@@ -64,7 +64,7 @@ nav ul a:hover {
 }
 
 nav ul a.active {
-  color: #f162a0; /* Rosa rosquilla */
+  color: #f162a0; 
   text-shadow: 1px 1px 0px #111;
 }
 
@@ -148,7 +148,7 @@ nav ul a.active {
   padding: 10px 24px;
   border: 2px solid #111;
   border-radius: 10px;
-  background: #f162a0; /* Rosa rosquilla */
+  background: #f162a0;
   color: #fff;
   font-size: 1.2rem;
   cursor: pointer;
