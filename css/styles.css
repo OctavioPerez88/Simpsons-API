@@ -1,0 +1,522 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;600;700;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: #f7f9fa;
+  color: #222;
+}
+
+#app {
+  /* Azul cielo característico de la intro de Los Simpson */
+  background: #70d1fe;
+  min-height: 80vh;
+}
+
+.view {
+  display: none;
+}
+
+/* Tipografía Simpson para encabezados y botones */
+h1, h2, h3, button, nav ul a {
+  font-family: 'Bangers', cursive;
+  letter-spacing: 1px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #fed439; /* Amarillo Simpson */
+  border-bottom: 4px solid #111;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.logo h1 {
+  font-size: 2.2rem;
+  color: #fed439;
+  -webkit-text-stroke: 1.5px #111;
+  text-shadow: 3px 3px 0px #f162a0; /* Rosa rosquilla */
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+nav ul a {
+  text-decoration: none;
+  font-size: 1.3rem;
+  color: #111;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+nav ul a:hover {
+  color: #0066cc;
+  transform: scale(1.05);
+}
+
+nav ul a.active {
+  color: #f162a0; /* Rosa rosquilla */
+  text-shadow: 1px 1px 0px #111;
+}
+
+.hero {
+  text-align: center;
+  padding: 100px 20px 30px;
+  color: #111;
+}
+
+.hero h2 {
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+  color: #fed439;
+  -webkit-text-stroke: 2px #111;
+  text-shadow: 4px 4px 0px #f162a0;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 1.5px 1.5px 0px #111;
+}
+
+.episodes {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.episode {
+  background: #ffffff;
+  border: 3px solid #111;
+  border-radius: 12px;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 4px 4px 0px #111;
+  transition: all 0.3s ease;
+}
+
+.episode:hover {
+  transform: translateY(-5px);
+  box-shadow: 6px 6px 0px #fed439;
+}
+
+.episode h2 {
+  margin-bottom: 10px;
+  color: #0066cc;
+}
+
+.episode p {
+  margin-bottom: 5px;
+}
+
+.filter_bar {
+  padding: 20px 20px 0;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filter_bar input,
+.filter_bar select {
+  padding: 12px;
+  border: 2px solid #111;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #111;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 2px 2px 0px #111;
+}
+
+.filter_bar input {
+  flex: 1;
+  min-width: 150px;
+}
+
+.filter_bar button {
+  padding: 10px 24px;
+  border: 2px solid #111;
+  border-radius: 10px;
+  background: #f162a0; /* Rosa rosquilla */
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 3px 3px 0px #111;
+  transition: all 0.2s ease;
+}
+
+.filter_bar button:hover {
+  background: #d84583;
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px #111;
+}
+
+.no_results {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 0px #111;
+  padding: 40px 0;
+}
+
+.characters {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+}
+
+.character {
+  background: #ffffff;
+  border: 3px solid #111;
+  border-radius: 14px;
+  text-align: center;
+  overflow: hidden;
+  box-shadow: 4px 4px 0px #111;
+  transition: all 0.3s ease;
+}
+
+.character:hover {
+  transform: scale(1.05) rotate(-1deg);
+  box-shadow: 6px 6px 0px #fed439;
+}
+
+.character img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-bottom: 2px solid #111;
+  background-color: #fff;
+}
+
+.character_info {
+  padding: 15px 10px;
+}
+
+.character_info h2 {
+  font-size: 1.4rem;
+  color: #111;
+}
+
+footer {
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+  background: #fed439;
+  border-top: 3px solid #111;
+  font-weight: bold;
+}
+
+#pagination,
+#location-pagination,
+#episode-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 25px;
+  flex-wrap: wrap;
+}
+
+#pagination a,
+#location-pagination a,
+#episode-pagination a {
+  display: block;
+  background: #ffffff;
+  color: #111;
+  font-family: 'Bangers', cursive;
+  font-size: 1.2rem;
+  border: 2px solid #111;
+  border-radius: 8px;
+  padding: 8px 16px;
+  text-decoration: none;
+  box-shadow: 2px 2px 0px #111;
+  transition: all 0.2s ease;
+}
+
+#pagination a:hover,
+#location-pagination a:hover,
+#episode-pagination a:hover {
+  background: #fed439;
+  transform: translateY(-2px);
+  box-shadow: 3px 3px 0px #111;
+}
+
+#pagination a.cached,
+#location-pagination a.cached,
+#episode-pagination a.cached {
+  background: #70d1fe;
+  color: #111;
+}
+
+#pagination a.active,
+#location-pagination a.active,
+#episode-pagination a.active {
+  background: #f162a0;
+  color: #fff;
+}
+
+.random-section {
+  padding: 30px 20px;
+  text-align: center;
+}
+
+#random-character-button {
+  padding: 14px 24px;
+  border: 3px solid #111;
+  border-radius: 12px;
+  background: #fed439;
+  color: #111;
+  font-size: 1.3rem;
+  cursor: pointer;
+  box-shadow: 4px 4px 0px #111;
+  transition: all 0.2s ease;
+}
+
+#random-character-button:hover {
+  background: #ffe366;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #111;
+}
+
+#random-character-button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+#random-character {
+  max-width: 250px;
+  margin: 20px auto;
+}
+
+.locations {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+}
+
+.location {
+  background: #ffffff;
+  border: 3px solid #111;
+  border-radius: 12px;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 4px 4px 0px #111;
+  transition: all 0.3s ease;
+}
+
+.location:hover {
+  transform: translateY(-5px);
+  box-shadow: 6px 6px 0px #0066cc;
+}
+
+.location h2 {
+  margin-bottom: 10px;
+  color: #f162a0;
+}
+
+.location p {
+  margin-bottom: 5px;
+}
+
+/* Modales */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal[hidden] {
+  display: none;
+}
+
+.modal_box {
+  background: #ffffff;
+  border: 4px solid #111;
+  border-radius: 14px;
+  padding: 25px;
+  max-width: 320px;
+  text-align: center;
+  box-shadow: 8px 8px 0px #fed439;
+}
+
+.modal_box button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: 2px solid #111;
+  border-radius: 8px;
+  background: #f162a0;
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 2px 2px 0px #111;
+}
+
+.modal_box_large {
+  position: relative;
+  max-width: 550px;
+  max-height: 85vh;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.modal_box_large .modal_close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  margin-top: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #111;
+  cursor: pointer;
+}
+
+#detail-modal-content img {
+  display: block;
+  width: 100%;
+  max-width: 240px;
+  margin: 0 auto 15px;
+  border: 3px solid #111;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+#detail-modal-content h2 {
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+  color: #0066cc;
+}
+
+#detail-modal-content p {
+  margin-bottom: 6px;
+  font-size: 1rem;
+}
+
+.episode_chip_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.episode_chip {
+  border: 2px solid #111;
+  background: #fed439;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.episode_character_grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.episode_character {
+  border: 2px solid #111;
+  background: #fafafa;
+  border-radius: 8px;
+  padding: 8px;
+  text-align: center;
+}
+
+.episode_character img {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #111;
+  object-fit: cover;
+}
+
+.episode_character p {
+  margin-top: 5px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.character,
+.episode {
+  cursor: pointer;
+}
+
+/* Responsividad */
+@media (max-width: 1024px) {
+  .characters,
+  .locations {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  nav ul {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .hero h2 {
+    font-size: 2.5rem;
+  }
+
+  .hero,
+  .filter_bar,
+  .locations,
+  .episodes {
+    padding-top: 25px;
+  }
+
+  .characters,
+  .locations {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .episodes {
+    grid-template-columns: 1fr;
+  }
+
+  .filter_bar {
+    flex-direction: column;
+  }
+
+  .filter_bar input,
+  .filter_bar select,
+  .filter_bar button {
+    width: 100%;
+  }
+
+  .episode_character_grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .modal_box_large {
+    max-width: 92vw;
+  }
+}

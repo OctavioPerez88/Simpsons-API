@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Los Simpson</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <h1>Los Simpson</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#" data-view="home">Home</a></li>
+        <li><a href="#" data-view="characters">Characters</a></li>
+        <li><a href="#" data-view="locations">Locations</a></li>
+        <li><a href="#" data-view="episodes">Episodes</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div id="app">
+    <section id="home" class="view">
+      <div class="hero">
+        <h2>Bienvenido a Los Simpson</h2>
+        <p>Explora los personajes y episodios de la ciudad de Springfield.</p>
+      </div>
+      <section class="random-section">
+        <button id="random-character-button" type="button">
+          Descubrir personaje aleatorio
+        </button>
+        <div id="random-character"></div>
+      </section>
+    </section>
+    <section id="characters" class="view">
+      <div class="filter_bar">
+        <input type="text" id="character-search-name" placeholder="Buscar por nombre...">
+        <select id="character-search-species">
+          <option value="">Especie: todas</option>
+          <option value="Human">Human</option>
+          <option value="Alien">Alien</option>  
+          <option value="Robot">Robot</option>
+          <option value="Animal">Animal</option>
+          <option value="God">God</option>
+          <option value="unknown">Unknown</option>
+        </select>
+        <select id="character-filter-status">
+          <option value="">Status: todos</option>
+          <option value="alive">Alive</option>
+          <option value="dead">Dead</option> 
+          <option value="unknown">Unknown</option>
+        </select>
+        <select id="character-filter-gender">
+          <option value="">Gender: todos</option>
+          <option value="female">Female</option>
+          <option value="male">Male</option>
+          <option value="unknown">Unknown</option>
+        </select>
+        <button type="button" id="character-search-button">Buscar</button>
+      </div>
+      <div class="characters"></div>
+      <div id="pagination"></div>
+    </section>
+    <section id="locations" class="view">
+      <div class="locations"></div>
+      <div id="location-pagination"></div>
+    </section>
+    <section id="episodes" class="view">
+      <div class="episodes"></div>
+      <div id="episode-pagination"></div>
+    </section>
+  </div>
+  <footer>
+    <p>Equipos Ponys Rosas</p>
+  </footer>
+  <div id="error-modal" class="modal" hidden>
+    <div class="modal_box">
+      <p id="error-modal-message"></p>
+      <button type="button" id="error-modal-close">Cerrar</button>
+    </div>
+  </div>
+  <div id="detail-modal" class="modal" hidden>
+    <div class="modal_box modal_box_large">
+      <button type="button" id="detail-modal-close" class="modal_close" aria-label="Cerrar">&times;</button>
+      <div id="detail-modal-content"></div>
+    </div>
+  </div>
+  <script type="module" src="js/main.js"></script>
+</body>
+
+</html>
