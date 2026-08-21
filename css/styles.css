@@ -520,3 +520,87 @@ footer {
     max-width: 92vw;
   }
 }
+  /* ============================= */
+/* ===== SELECTOR DE PERSONAJES ===== */
+/* ============================= */
+
+.selector-container {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 10px 20px 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#selector-load-button {
+  padding: 12px 24px;
+  border: 3px solid #111;
+  border-radius: 12px;
+  background: #f162a0;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 4px 4px 0px #111;
+  transition: all 0.2s ease;
+}
+
+#selector-load-button:hover {
+  background: #d84583;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #111;
+}
+
+#selector-load-button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+#selector-personaje {
+  padding: 12px;
+  border: 2px solid #111;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #111;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 2px 2px 0px #111;
+}
+
+.selector-placeholder {
+  text-align: center;
+  color: #ffffff;
+  font-weight: bold;
+  text-shadow: 1.5px 1.5px 0px #111;
+  padding: 30px 0;
+}
+
+.selector-card {
+  background: #ffffff;
+  border: 3px solid #111;
+  border-radius: 14px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 4px 4px 0px #fed439;
+}
+
+.selector-card img {
+  width: 100%;
+  max-width: 220px;
+  height: 220px;
+  object-fit: contain;
+  border: 3px solid #111;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  background: #fff;
+}
+
+.selector-card h3 {
+  font-size: 1.8rem;
+  color: #0066cc;
+  margin-bottom: 10px;
+}
+
+.selector-card p {
+  margin-bottom: 6px;
+}
