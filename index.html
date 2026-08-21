@@ -19,6 +19,8 @@
         <li><a href="#" data-view="characters">Characters</a></li>
         <li><a href="#" data-view="locations">Locations</a></li>
         <li><a href="#" data-view="episodes">Episodes</a></li>
+        <!-- ===== NUEVO: enlace al selector de personajes ===== -->
+        <li><a href="#" data-view="selector">Selector</a></li>
       </ul>
     </nav>
   </header>
@@ -72,6 +74,22 @@
       <div class="episodes"></div>
       <div id="episode-pagination"></div>
     </section>
+    <!-- ===== NUEVO: sección del selector de personajes ===== -->
+    <section id="selector" class="view">
+      <div class="hero">
+        <h2>Selector de Personajes</h2>
+        <p>Elige tu personaje favorito de Los Simpson.</p>
+      </div>
+      <div class="selector-container">
+        <button id="selector-load-button" type="button">Cargar personajes</button>
+        <select id="selector-personaje">
+          <option value="">-- Primero carga los personajes --</option>
+        </select>
+        <div id="selector-info">
+          <p class="selector-placeholder">Aquí verás la información de tu personaje favorito.</p>
+        </div>
+      </div>
+    </section>
   </div>
   <footer>
     <p>Equipos Ponys Rosas</p>
@@ -89,6 +107,8 @@
     </div>
   </div>
   <script type="module" src="js/main.js"></script>
+  <!-- ===== NUEVO: script del selector ===== -->
+  <script type="module" src="js/selector.js"></script>
 </body>
 
 </html>
