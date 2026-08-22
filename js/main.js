@@ -43,6 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function getPersonajes() {
+
+    const loadingMessage = document.getElementById('loading-message');
+  loadingMessage.hidden = false;
+
   let search = document.getElementById('character-search-name').value;
   let url = search ? `${urlBase}/find/${search}` : `${urlBase}?limit=20&page=${paginaActual}`;
 
@@ -68,15 +72,10 @@ async function getPersonajes() {
 
   } catch (err) {
     console.log("error cargando api", err);
-  }
+  } finally {
+    loadingMessage.hidden = true;
+  }    
 }
-
-const pintarSinResultados = () => {
-  const container = document.querySelector('.characters');
-  container.innerHTML = `<div class="no_results"><h2>No existe ese personaje bro</h2><p>Intenta con otro nombre.</p></div>`;
-  document.getElementById('pagination').innerHTML = '';
-};
-
 const pintarCartas = (personajes) => {
   const container = document.querySelector('.characters');
   container.innerHTML = '';
