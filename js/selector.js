@@ -1,4 +1,3 @@
-// ===== SELECTOR DE PERSONAJES =====
 const urlBaseSelector = 'https://apisimpsons.fly.dev/api/personajes';
 let personajesSelector = [];
 
@@ -18,7 +17,7 @@ async function cargarListaSelector() {
   try {
     personajesSelector = [];
 
-    // Pedimos varias páginas para tener más personajes disponibles
+
     for (let pag = 1; pag <= 3; pag++) {
       const res = await fetch(`${urlBaseSelector}?limit=20&page=${pag}`);
       const data = await res.json();
@@ -27,7 +26,7 @@ async function cargarListaSelector() {
       }
     }
 
-    // Llenamos la lista desplegable
+
     select.innerHTML = '<option value="">-- Elige tu personaje favorito --</option>';
     personajesSelector.forEach((p, i) => {
       const option = document.createElement('option');

@@ -2,12 +2,10 @@ const urlBase = 'https://apisimpsons.fly.dev/api/personajes';
 let paginaActual = 1;
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Ocultar todo y mostrar solo el home al inicio
   const views = document.querySelectorAll('.view');
   views.forEach(v => v.style.display = 'none');
   document.getElementById('home').style.display = 'block';
 
-  // Navegacion del menu
   const links = document.querySelectorAll('nav a');
   links.forEach(link => {
     link.addEventListener('click', function(e) {
@@ -17,19 +15,16 @@ document.addEventListener('DOMContentLoaded', () => {
       views.forEach(v => v.style.display = 'none');
       document.getElementById(section).style.display = 'block';
 
-      // si entra a personajes, cargamos la api
       if(section === 'characters') {
         getPersonajes();
       }
 
-      // SI ENTRA A EPISODIOS, CARGAMOS LOS EPISODIOS (NUEVO)
       if(section === 'episodes') {
         getEpisodios();
       }
     });
   });
 
-  // Eventos de botones
   document.getElementById('character-search-button').addEventListener('click', () => {
     paginaActual = 1;
     getPersonajes();
@@ -175,21 +170,17 @@ async function randomChar() {
   btn.innerText = 'Descubrir personaje aleatorio';
 }
 
-// ==================== NUEVA FUNCIÓN PARA EPISODIOS ====================
-
 async function getEpisodios() {
   const container = document.querySelector('.episodes');
   container.innerHTML = '<p>Cargando episodios...</p>';
 
   try {
-    // Usamos una API de episodios de Los Simpson
+    
     let res = await fetch('https://apisimpsons.fly.dev/api/episodios?limit=20');
     let data = await res.json();
 
     let episodios = data.docs || data;
     container.innerHTML = '';
-
-    // Darle formato de cuadrícula básica a la sección
     container.style.display = 'grid';
     container.style.gridTemplateColumns = 'repeat(auto-fill, minmax(220px, 1fr))';
     container.style.gap = '15px';
@@ -197,8 +188,7 @@ async function getEpisodios() {
 
     episodios.forEach(ep => {
       let card = document.createElement('div');
-      
-      // Aplicar los mismos estilos sencillos de las tarjetas
+  
       card.style.border = '1px solid #ccc';
       card.style.borderRadius = '10px';
       card.style.padding = '15px';

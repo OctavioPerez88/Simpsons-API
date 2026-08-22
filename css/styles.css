@@ -13,7 +13,7 @@ body {
 }
 
 #app {
-  /* Azul cielo característico de la intro de Los Simpson */
+  
   background: #70d1fe;
   min-height: 80vh;
 }
@@ -477,7 +477,6 @@ footer {
   cursor: pointer;
 }
 
-/* Responsividad */
 @media (max-width: 1024px) {
   .characters,
   .locations {
@@ -536,9 +535,6 @@ footer {
     max-width: 92vw;
   }
 }
-  /* ============================= */
-/* ===== SELECTOR DE PERSONAJES ===== */
-/* ============================= */
 
 .selector-container {
   max-width: 620px;
