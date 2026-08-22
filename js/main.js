@@ -49,8 +49,8 @@ async function getPersonajes() {
     // la api responde diferente si buscas por nombre
     let list = data.docs ? data.docs : data.result;
     
-    if(!list) {
-      alert("No se encontró ese personaje");
+    if(!list || list.length === 0) {
+      pintarSinResultados();
       return;
     }
 
@@ -68,6 +68,12 @@ async function getPersonajes() {
   }
 }
 
+const pintarSinResultados = () => {
+  const container = document.querySelector('.characters');
+  container.innerHTML = `<div class="no_results"><h2>No existe ese personaje bro</h2><p>Intenta con otro nombre.</p></div>`;
+  document.getElementById('pagination').innerHTML = '';
+};
+
 const pintarCartas = (personajes) => {
   const container = document.querySelector('.characters');
   container.innerHTML = '';
@@ -76,8 +82,6 @@ const pintarCartas = (personajes) => {
     let card = document.createElement('div');
     card.classList.add('card-personaje'); 
 
-    // --- ESTILOS BÁSICOS RÁPIDOS INYECTADOS A MANO (PARA EL EFECTO) ---
-    // Estilos base de la tarjeta (un poco desordenados)
     card.style.border = '1px solid #ccc';
     card.style.borderRadius = '10px';
     card.style.padding = '15px';
