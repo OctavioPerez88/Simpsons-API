@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="es-MX">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Los Simpson</title>
+  <title>Los Simpson API</title>
   <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
 </head>
-
 <body>
   <header>
     <div class="logo">
@@ -28,7 +27,7 @@
         <p>Explora los personajes de la ciudad de Springfield.</p>
       </div>
       <section class="random-section">
-        <button id="random-character-button" type="button">
+        <button id="random-character-button" type="button" class="btn btn-rosquilla">
           Descubrir personajes random
         </button>
         <div id="random-character"></div>
@@ -37,21 +36,22 @@
     <section id="characters" class="view">
       <div class="filter_bar">
         <input type="text" id="character-search-name" placeholder="Buscar por nombre...">
-        <button type="button" id="character-search-button">Buscar</button>
+        <button type="button" id="character-search-button" class="btn btn-rosquilla">Buscar</button>
       </div>
 
-<p id="loading-message" hidden>Cargando personajes...</p>
+      <p id="loading-message" hidden>Cargando personajes...</p>
 
       <div class="characters"></div>
-      <div id="pagination"></div>
+      
+      <div id="pagination" class="paginacion-simpson"></div>
     </section>
     <section id="locations" class="view">
       <div class="locations"></div>
-      <div id="location-pagination"></div>
+      <div id="location-pagination" class="paginacion-simpson"></div>
     </section>
     <section id="episodes" class="view">
       <div class="episodes"></div>
-      <div id="episode-pagination"></div>
+      <div id="episode-pagination" class="paginacion-simpson"></div>
     </section>
     <section id="selector" class="view">
       <div class="hero">
@@ -59,7 +59,7 @@
         <p>Elige tu personaje favorito de Los Simpson.</p>
       </div>
       <div class="selector-container">
-        <button id="selector-load-button" type="button">Cargar personajes</button>
+        <button id="selector-load-button" type="button" class="btn btn-rosquilla">Cargar personajes</button>
         <select id="selector-personaje">
           <option value="">-- Primero carga los personajes --</option>
         </select>
@@ -75,7 +75,7 @@
   <div id="error-modal" class="modal" hidden>
     <div class="modal_box">
       <p id="error-modal-message"></p>
-      <button type="button" id="error-modal-close">Cerrar</button>
+      <button type="button" id="error-modal-close" class="btn btn-atras" style="opacity: 1; cursor: pointer;">Cerrar</button>
     </div>
   </div>
   <div id="detail-modal" class="modal" hidden>
@@ -85,7 +85,6 @@
     </div>
   </div>
   <script type="module" src="js/main.js"></script>
-  <!-- ===== NUEVO: script del selector ===== -->
   <script type="module" src="js/selector.js"></script>
 </body>
 
