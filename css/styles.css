@@ -499,3 +499,19 @@ inset 0 -5px 0 rgba(0, 0, 0, 0.1),
 .selector-card p {
   margin-bottom: 6px;
 }
+
+
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal_box_large {
+  width: 90vw;
+  max-width: 760px;
+  margin: auto;
+  padding: 35px;
+}
