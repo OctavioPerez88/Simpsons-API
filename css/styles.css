@@ -515,3 +515,13 @@ inset 0 -5px 0 rgba(0, 0, 0, 0.1),
   margin: auto;
   padding: 35px;
 }
+.random-card p {
+  display: inline-block;
+  margin: 10px 0;
+  padding: 8px 14px;
+  background-color: #fed439;
+  color: #111;
+  border: 2px solid #111;
+  border-radius: 8px;
+  font-weight: bold;
+}
