@@ -2,12 +2,10 @@ const urlBase = 'https://apisimpsons.fly.dev/api/personajes';
 let paginaActual = 1;
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Ocultar todo y mostrar solo el home al inicio
   const views = document.querySelectorAll('.view');
   views.forEach(v => v.style.display = 'none');
   document.getElementById('home').style.display = 'block';
 
-  // Navegacion del menu
   const links = document.querySelectorAll('nav a');
   links.forEach(link => {
     link.addEventListener('click', function(e) {
@@ -17,14 +15,16 @@ document.addEventListener('DOMContentLoaded', () => {
       views.forEach(v => v.style.display = 'none');
       document.getElementById(section).style.display = 'block';
 
-      // si entra a personajes, cargamos la api
       if(section === 'characters') {
         getPersonajes();
+      }
+
+      if(section === 'episodes') {
+        getEpisodios();
       }
     });
   });
 
-  // Eventos de botones
   document.getElementById('character-search-button').addEventListener('click', () => {
     paginaActual = 1;
     getPersonajes();
@@ -38,25 +38,27 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function getPersonajes() {
+
+    const loadingMessage = document.getElementById('loading-message');
+  loadingMessage.hidden = false;
+
   let search = document.getElementById('character-search-name').value;
   let url = search ? `${urlBase}/find/${search}` : `${urlBase}?limit=20&page=${paginaActual}`;
 
   try {
     let res = await fetch(url);
     let data = await res.json();
-    console.log("datos de la api:", data); // para checar en consola
+    console.log("datos de la api:", data);
 
-    // la api responde diferente si buscas por nombre
     let list = data.docs ? data.docs : data.result;
     
-    if(!list) {
-      alert("No se encontró ese personaje");
+    if(!list || list.length === 0) {
+      pintarSinResultados();
       return;
     }
 
     pintarCartas(list);
 
-    // Paginacion solo si no es busqueda
     if(data.docs) {
       hacerPaginacion(data.page, data.totalPages);
     } else {
@@ -65,26 +67,32 @@ async function getPersonajes() {
 
   } catch (err) {
     console.log("error cargando api", err);
-  }
+  } finally {
+    loadingMessage.hidden = true;
+  }    
 }
-
 const pintarCartas = (personajes) => {
   const container = document.querySelector('.characters');
   container.innerHTML = '';
 
   personajes.forEach(p => {
+
+
+    if (p.Nombre === 'Steve Friedman') {
+  p.Imagen = './js/img/steve-friedman.png';
+}
+
+
     let card = document.createElement('div');
     card.classList.add('card-personaje'); 
 
-    // --- ESTILOS BÁSICOS RÁPIDOS INYECTADOS A MANO (PARA EL EFECTO) ---
-    // Estilos base de la tarjeta (un poco desordenados)
     card.style.border = '1px solid #ccc';
     card.style.borderRadius = '10px';
     card.style.padding = '15px';
     card.style.textAlign = 'center';
     card.style.cursor = 'pointer';
     card.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
-    card.style.transition = 'transform 0.2s, box-shadow 0.2s'; // para el hover
+    card.style.transition = 'transform 0.2s, box-shadow 0.2s';
 
     card.innerHTML = `
       <img src="${p.Imagen}" alt="${p.Nombre}" class="img-char" style="width:100%; height:200px; object-fit:contain; margin-bottom:15px;">
@@ -93,7 +101,6 @@ const pintarCartas = (personajes) => {
       <p><b>Ocupación:</b> ${p.Ocupacion}</p>
     `;
 
-    // --- RECUPERAR EL EFECTO HOVER EN EL JS ---
     card.onmouseover = function() {
       this.style.transform = 'scale(1.05)';
       this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.3)';
@@ -104,11 +111,12 @@ const pintarCartas = (personajes) => {
       this.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
     }
 
-    // Click para abrir el modal
     card.addEventListener('click', () => {
       document.getElementById('detail-modal-content').innerHTML = `
         <h2>${p.Nombre}</h2>
-        <img src="${p.Imagen}" width="200">
+
+         <img src="${p.Imagen}" width="200"> 
+
         <p><b>Género:</b> ${p.Genero}</p>
         <br>
         <p>${p.Historia}</p>
@@ -155,7 +163,6 @@ async function randomChar() {
     let res = await fetch(`${urlBase}?limit=20&page=${num}`);
     let data = await res.json();
     
-    // agarramos uno al azar del arreglo
     let random = data.docs[Math.floor(Math.random() * data.docs.length)];
 
     document.getElementById('random-character').innerHTML = `
@@ -170,4 +177,45 @@ async function randomChar() {
   }
   
   btn.innerText = 'Descubrir personaje aleatorio';
+}
+
+async function getEpisodios() {
+  const container = document.querySelector('.episodes');
+  container.innerHTML = '<p>Cargando episodios...</p>';
+
+  try {
+    
+    let res = await fetch('https://apisimpsons.fly.dev/api/episodios?limit=20');
+    let data = await res.json();
+
+    let episodios = data.docs || data;
+    container.innerHTML = '';
+    container.style.display = 'grid';
+    container.style.gridTemplateColumns = 'repeat(auto-fill, minmax(220px, 1fr))';
+    container.style.gap = '15px';
+    container.style.padding = '15px';
+
+    episodios.forEach(ep => {
+      let card = document.createElement('div');
+  
+      card.style.border = '1px solid #ccc';
+      card.style.borderRadius = '10px';
+      card.style.padding = '15px';
+      card.style.textAlign = 'center';
+      card.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
+
+      card.innerHTML = `
+        <img src="${ep.Imagen || 'https://via.placeholder.com/200'}" alt="${ep.Nombre}" style="width:100%; height:140px; object-fit:cover; border-radius:5px; margin-bottom:10px;">
+        <h3 style="font-size:16px;">${ep.Nombre}</h3>
+        <p><b>Temporada:</b> ${ep.Temporada || 'N/A'}</p>
+        <p><b>Episodio:</b> ${ep.Episodio || 'N/A'}</p>
+      `;
+
+      container.appendChild(card);
+    });
+
+  } catch (err) {
+    console.log("Error al cargar episodios:", err);
+    container.innerHTML = '<p>Error al cargar episodios.</p>';
+  }
 }
