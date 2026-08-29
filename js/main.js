@@ -71,20 +71,6 @@ async function getPersonajes() {
     loadingMessage.hidden = true;
   }    
 }
-const pintarSinResultados = () => {
-  const container = document.querySelector('.characters');
-
-  container.innerHTML = `
-    <div class="no_results">
-      <h2>No se encuentra ningún personaje con ese nombre</h2>
-      <p>No existe ningún personaje con ese nombre.</p>
-      <p class="no_results-tip">💡 Tip: prueba  con <b>Homer</b>, <b>Bart</b> o <b>Marge</b></p>
-    </div>
-  `;
-
-  document.getElementById('pagination').innerHTML = '';
-};
-
 const pintarCartas = (personajes) => {
   const container = document.querySelector('.characters');
   container.innerHTML = '';
