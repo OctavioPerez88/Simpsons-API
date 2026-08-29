@@ -76,15 +76,13 @@ const pintarSinResultados = () => {
 
   container.innerHTML = `
     <div class="no_results">
-      <h2>No se encuentra ningún personaje con ese nombre</h2>
-      <p>No existe ningún personaje con ese nombre.</p>
-      <p class="no_results-tip">💡 Tip: prueba  con <b>Homer</b>, <b>Bart</b> o <b>Marge</b></p>
+      <h2>No se encontraron personajes con ese nombre</h2>
+      <p>Intenta con otro nombre.</p>
     </div>
   `;
 
   document.getElementById('pagination').innerHTML = '';
 };
-
 const pintarCartas = (personajes) => {
   const container = document.querySelector('.characters');
   container.innerHTML = '';
