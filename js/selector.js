@@ -56,6 +56,10 @@ function mostrarSeleccionado() {
 
   const p = personajesSelector[select.value];
 
+  if (p.Nombre === 'Steve Friedman') {
+    p.Imagen = './js/img/steve-friedman.png';
+  }
+
   info.innerHTML = `
     <div class="selector-card">
       <img src="${p.Imagen}" alt="${p.Nombre}">

@@ -76,6 +76,13 @@ const pintarCartas = (personajes) => {
   container.innerHTML = '';
 
   personajes.forEach(p => {
+
+
+    if (p.Nombre === 'Steve Friedman') {
+  p.Imagen = './js/img/steve-friedman.png';
+}
+
+
     let card = document.createElement('div');
     card.classList.add('card-personaje'); 
 
@@ -107,7 +114,9 @@ const pintarCartas = (personajes) => {
     card.addEventListener('click', () => {
       document.getElementById('detail-modal-content').innerHTML = `
         <h2>${p.Nombre}</h2>
-        <img src="${p.Imagen}" width="200">
+
+         <img src="${p.Imagen}" width="200"> 
+
         <p><b>Género:</b> ${p.Genero}</p>
         <br>
         <p>${p.Historia}</p>
