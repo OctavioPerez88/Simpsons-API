@@ -126,21 +126,37 @@ nav ul a.active {
   align-items: center;
   gap: 8px;
   margin: 30px auto;
-  padding: 30px 50px;
+  padding: 35px 50px;
   background: #fed439;
   border: 3px solid #111;
   border-radius: 16px;
   box-shadow: 6px 6px 0px #f162a0;
   text-align: center;
+  animation: no_results_float 3s ease-in-out infinite;
+}
+.no_results-icon {
+  font-size: 3.5rem;
+  filter: drop-shadow(3px 3px 0 #111);
 }
 .no_results h2 {
-  font-size: 2.2rem;
+  font-size: 2.6rem;
   color: #111;
   text-shadow: 2px 2px 0px #f162a0;
 }
 .no_results p {
   font-weight: 600;
   color: #444;
+}
+.no_results-tip {
+  background: #fff;
+  border: 2px solid #111;
+  border-radius: 8px;
+  padding: 8px 14px;
+  box-shadow: 2px 2px 0 #111;
+}
+@keyframes no_results_float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(-0.5deg); }
 }
 .characters {
   padding: 20px;
